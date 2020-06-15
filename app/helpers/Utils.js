@@ -1,6 +1,5 @@
 import {CommonActions} from '@react-navigation/native';
 import moment from 'moment';
-import DocumentPicker from 'react-native-document-picker';
 import {isString, isArray} from 'app/helpers/Primitives';
 import colors from 'app/theme/colors';
 
