@@ -19,7 +19,7 @@ import {PDText} from 'app/components';
 
 export default class RenderItem extends PureComponent {
   render() {
-    const {item, index, pokeDoxData} = this.props;
+    const {item, index} = this.props;
     const cardIcon = getPokemonIcon(item.id);
     const cardBackGroundColor = getPokemonBackgroundColor(item.type);
     return (
@@ -37,7 +37,7 @@ export default class RenderItem extends PureComponent {
             position: 'absolute',
           }}
           onPress={() => {
-            pokeDoxData.splice(index, 1);
+            this.props.removePokeMon();
           }}>
           <Image
             source={Images.cross}

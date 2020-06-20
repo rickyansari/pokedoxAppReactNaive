@@ -1,5 +1,5 @@
 import {CommonActions} from '@react-navigation/native';
-import {isString, isArray} from 'app/helpers/Primitives';
+import {isArray} from 'app/helpers/Primitives';
 import colors from 'app/theme/colors';
 const ImageURL =
   'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/';
