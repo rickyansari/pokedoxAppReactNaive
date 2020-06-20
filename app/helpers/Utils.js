@@ -1,8 +1,8 @@
 import {CommonActions} from '@react-navigation/native';
-import moment from 'moment';
-import DocumentPicker from 'react-native-document-picker';
 import {isString, isArray} from 'app/helpers/Primitives';
 import colors from 'app/theme/colors';
+const ImageURL =
+  'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/';
 
 function resetAndGoToScreen(routeName, navigation) {
   navigation.dispatch(
@@ -24,29 +24,14 @@ function getNestedObjectPropertyByPath({
   );
 }
 
-function formatDate() {
-  return moment().format('MMMM D YYYY LT');
-}
-
-function removeAllWhiteSpaces(str) {
-  if (isString(str)) {
-    return str.replace(/\s/g, '');
-  }
-  return '';
-}
 function getPokemonIcon(id) {
   let newId = String(id);
   if (newId) {
-    if (newId.length === 1) {
-      newId = '00' + id;
-    }
-    if (newId.length === 2) {
-      newId = '0' + id;
-    }
+    newId = newId.padStart(3, '0');
   } else {
     newId = '001';
   }
-  return `https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${newId}.png`;
+  return `${ImageURL}${newId}.png`;
 }
 
 function getPokemonBackgroundColor(type = []) {
@@ -96,8 +81,6 @@ function getPokemonBackgroundColor(type = []) {
 module.exports = {
   getPokemonIcon,
   getPokemonBackgroundColor,
-  formatDate,
   resetAndGoToScreen,
   getNestedObjectPropertyByPath,
-  removeAllWhiteSpaces,
 };
