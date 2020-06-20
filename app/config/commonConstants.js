@@ -1,10 +1,3 @@
-const NetworkRequestTypes = {
-  delete: 'DELETE',
-  get: 'GET',
-  post: 'POST',
-  put: 'PUT',
-};
-
 const UIConstants = {
   APP_HEADER: 'appHeader',
   BUTTON_TEXT: 'buttonText',
@@ -28,24 +21,13 @@ const Messages = {
   commonExceptionMessage: 'unable to process request please try again letter.',
 };
 
-const APIPath = {
-  getOTP: 'otp/emailmobile',
-  resendOTP: 'otp/emailmobile',
-  verifyOTP: 'otp',
-  welcomeScreenMasters: 'facilities',
-};
 const SCREEN_NAME = {
-  SIGN_IN: 'SignIn',
-  SPLASH: 'Splash',
-  WELCOME: 'Welcome',
   HOME: 'Home',
   POKEMON_DETAIL: 'Detail',
 };
 
 module.exports = {
   ...Messages,
-  ...NetworkRequestTypes,
   ...UIConstants,
-  APIPath,
   SCREEN_NAME,
 };
