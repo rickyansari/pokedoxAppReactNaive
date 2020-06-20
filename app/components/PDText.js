@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {rs} from 'app/theme/responsiveSize';
 import {DEFAULT_TEXT} from 'app/config/commonConstants';
 
-export default function IBText({
+export default function PDText({
   textStyle = {},
   children,
   type = DEFAULT_TEXT,

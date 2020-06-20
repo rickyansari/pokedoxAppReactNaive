@@ -15,7 +15,7 @@ import {rs, widthPercentageToDP} from 'app/theme/responsiveSize';
 import styled from 'styled-components';
 import colors from 'app/theme/colors';
 import pokeDoxData from 'app/constants/pokedex';
-import {IBText, IBButton} from 'app/components';
+import {PDText, IBButton} from 'app/components';
 import {set} from 'react-native-reanimated';
 
 export default function Home(props) {
@@ -58,7 +58,7 @@ export default function Home(props) {
           justifyContent: 'space-between',
           alignItems: 'center',
         }}>
-        <IBText
+        <PDText
           numberOfLines={1}
           ellipsizeMode="tail"
           shouldTranslate={false}
@@ -70,7 +70,7 @@ export default function Home(props) {
             marginLeft: rs[10],
           }}>
           {'Pokedex'}
-        </IBText>
+        </PDText>
         <TouchableOpacity
           style={{
             backgroundColor: colors.GRASS_CARD,
@@ -84,11 +84,11 @@ export default function Home(props) {
           onPress={() => {
             setShowAddPokemon(oldValue => !oldValue);
           }}>
-          <IBText
+          <PDText
             textStyle={{fontSize: rs[35], color: colors.WHITE}}
             shouldTranslate={false}>
             {'+'}
-          </IBText>
+          </PDText>
         </TouchableOpacity>
       </View>
       {showAddPokemon ? <AddPokemnon /> : null}

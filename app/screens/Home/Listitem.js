@@ -15,7 +15,7 @@ import Images from 'app/config/Images';
 import {rs, widthPercentageToDP} from 'app/theme/responsiveSize';
 import styled from 'styled-components';
 import colors from 'app/theme/colors';
-import {IBText} from 'app/components';
+import {PDText} from 'app/components';
 
 export default class RenderItem extends PureComponent {
   render() {
@@ -68,7 +68,7 @@ export default class RenderItem extends PureComponent {
                     margin: rs[4],
                     borderRadius: rs[30],
                   }}>
-                  <IBText
+                  <PDText
                     textStyle={{
                       flex: 1,
                       marginHorizontal: rs[4],
@@ -78,7 +78,7 @@ export default class RenderItem extends PureComponent {
                     ellipsizeMode="tail"
                     shouldTranslate={false}>
                     {type}
-                  </IBText>
+                  </PDText>
                 </View>
               );
             })}
@@ -97,7 +97,7 @@ const CardIcon = styled.Image`
   margin: ${`${rs[10]}px`};
 `;
 
-const CardText = styled(IBText)`
+const CardText = styled(PDText)`
   font-size: ${`${rs[20]}px`};
   align-self: flex-start;
   margin-top: ${`${rs[10]}px`};
