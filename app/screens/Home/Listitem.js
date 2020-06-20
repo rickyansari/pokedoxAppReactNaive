@@ -1,21 +1,12 @@
-import React, {PureComponent, pure, useEffect, useState} from 'react';
-import {
-  Text,
-  FlatList,
-  ImageBackground,
-  View,
-  Dimensions,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
-
+import React, {PureComponent} from 'react';
+import {View, Image, TouchableOpacity} from 'react-native';
 import {getPokemonIcon, getPokemonBackgroundColor} from 'app/helpers/Utils';
-import {SCREEN_NAME} from 'app/config/commonConstants';
-import Images from 'app/config/Images';
-import {rs, widthPercentageToDP} from 'app/theme/responsiveSize';
-import styled from 'styled-components';
-import colors from 'app/theme/colors';
 import {PDText} from 'app/components';
+import {rs, widthPercentageToDP} from 'app/theme/responsiveSize';
+import {SCREEN_NAME} from 'app/config/commonConstants';
+import colors from 'app/theme/colors';
+import Images from 'app/config/Images';
+import styled from 'styled-components';
 
 export default class RenderItem extends PureComponent {
   render() {
