@@ -25,11 +25,12 @@ function getNestedObjectPropertyByPath({
 }
 
 function getPokemonIcon(id) {
+  const defaultImageId = '001';
   let newId = String(id);
   if (newId) {
     newId = newId.padStart(3, '0');
   } else {
-    newId = '001';
+    newId = defaultImageId;
   }
   return `${ImageURL}${newId}.png`;
 }
