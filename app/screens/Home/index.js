@@ -1,27 +1,27 @@
-import React, {pure, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {
   TextInput,
   FlatList,
-  ImageBackground,
   View,
-  Dimensions,
   Button,
-  Image,
   TouchableOpacity,
 } from 'react-native';
-import RenderItem from './Listitem';
-const {height} = Dimensions.get('window');
-import {rs, widthPercentageToDP} from 'app/theme/responsiveSize';
-import styled from 'styled-components';
+import {PDText} from 'app/components';
+import {rs} from 'app/theme/responsiveSize';
 import colors from 'app/theme/colors';
 import pokeDoxData from 'app/constants/pokedex';
-import {IBText, IBButton} from 'app/components';
-import {set} from 'react-native-reanimated';
+import RenderItem from './Listitem';
+import styled from 'styled-components';
 
 export default function Home(props) {
-  const [refreshing, setRefreshing] = useState(false);
   const [showAddPokemon, setShowAddPokemon] = useState(false);
   const [newPokemon, setNewPokemon] = useState({});
+  const [data, setData] = useState(pokeDoxData);
+
+  function removePokeMon(pokeMonDetail) {
+    const newList = data.filter(item => item.id !== pokeMonDetail.id);
+    setData(newList);
+  }
 
   function AddPokemnon() {
     function onChangeText(name, text) {
@@ -31,6 +31,10 @@ export default function Home(props) {
         ...rest,
         [name]: text,
       });
+    }
+    function Add() {
+      const updatedList = [...data, newPokemon];
+      setData(updatedList);
     }
 
     return (
@@ -46,10 +50,11 @@ export default function Home(props) {
             />
           );
         })}
-        <Button onPress={onChangeText} title="Add" color="#841584" />
+        <Button onPress={Add} title="Add" color="#841584" />
       </View>
     );
   }
+
   return (
     <Wrapper>
       <View
@@ -58,7 +63,7 @@ export default function Home(props) {
           justifyContent: 'space-between',
           alignItems: 'center',
         }}>
-        <IBText
+        <PDText
           numberOfLines={1}
           ellipsizeMode="tail"
           shouldTranslate={false}
@@ -70,7 +75,7 @@ export default function Home(props) {
             marginLeft: rs[10],
           }}>
           {'Pokedex'}
-        </IBText>
+        </PDText>
         <TouchableOpacity
           style={{
             backgroundColor: colors.GRASS_CARD,
@@ -84,29 +89,28 @@ export default function Home(props) {
           onPress={() => {
             setShowAddPokemon(oldValue => !oldValue);
           }}>
-          <IBText
+          <PDText
             textStyle={{fontSize: rs[35], color: colors.WHITE}}
             shouldTranslate={false}>
             {'+'}
-          </IBText>
+          </PDText>
         </TouchableOpacity>
       </View>
       {showAddPokemon ? <AddPokemnon /> : null}
       <FlatList
         numColumns={2}
-        extraData={pokeDoxData}
-        data={pokeDoxData}
-        refreshing={refreshing}
+        extraData={data}
+        data={data}
         initialNumToRender={20}
         maxToRenderPerBatch={10}
         removeClippedSubviews={true}
-        keyExtractor={(item, index) => `${item.id}_${index}`}
+        keyExtractor={(item, index) => `${item.id}_${item.name.english}`}
         renderItem={({item, index}) => (
           <RenderItem
             item={item}
             index={index}
-            pokeDoxData={pokeDoxData}
             navigation={props.navigation}
+            removePokeMon={() => removePokeMon(item)}
           />
         )}
       />

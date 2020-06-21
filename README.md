@@ -13,8 +13,6 @@ A react-native pokedox Application. {No API's, only offline Data}.
 ```bash
 $ git clone git@github.com:rickyansari/PokeDox2.git
 $ cd PokeDox2
-$ unzip project.zip
-$ cd project
 ```
 
 Then, install the packages

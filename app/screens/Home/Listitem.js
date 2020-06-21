@@ -1,25 +1,16 @@
-import React, {PureComponent, pure, useEffect, useState} from 'react';
-import {
-  Text,
-  FlatList,
-  ImageBackground,
-  View,
-  Dimensions,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
-
+import React, {PureComponent} from 'react';
+import {View, Image, TouchableOpacity} from 'react-native';
 import {getPokemonIcon, getPokemonBackgroundColor} from 'app/helpers/Utils';
-import {SCREEN_NAME} from 'app/config/commonConstants';
-import Images from 'app/config/Images';
+import {PDText} from 'app/components';
 import {rs, widthPercentageToDP} from 'app/theme/responsiveSize';
-import styled from 'styled-components';
+import {SCREEN_NAME} from 'app/config/commonConstants';
 import colors from 'app/theme/colors';
-import {IBText} from 'app/components';
+import Images from 'app/config/Images';
+import styled from 'styled-components';
 
 export default class RenderItem extends PureComponent {
   render() {
-    const {item, index, pokeDoxData} = this.props;
+    const {item, index} = this.props;
     const cardIcon = getPokemonIcon(item.id);
     const cardBackGroundColor = getPokemonBackgroundColor(item.type);
     return (
@@ -37,7 +28,7 @@ export default class RenderItem extends PureComponent {
             position: 'absolute',
           }}
           onPress={() => {
-            pokeDoxData.splice(index, 1);
+            this.props.removePokeMon();
           }}>
           <Image
             source={Images.cross}
@@ -68,7 +59,7 @@ export default class RenderItem extends PureComponent {
                     margin: rs[4],
                     borderRadius: rs[30],
                   }}>
-                  <IBText
+                  <PDText
                     textStyle={{
                       flex: 1,
                       marginHorizontal: rs[4],
@@ -78,7 +69,7 @@ export default class RenderItem extends PureComponent {
                     ellipsizeMode="tail"
                     shouldTranslate={false}>
                     {type}
-                  </IBText>
+                  </PDText>
                 </View>
               );
             })}
@@ -97,7 +88,7 @@ const CardIcon = styled.Image`
   margin: ${`${rs[10]}px`};
 `;
 
-const CardText = styled(IBText)`
+const CardText = styled(PDText)`
   font-size: ${`${rs[20]}px`};
   align-self: flex-start;
   margin-top: ${`${rs[10]}px`};

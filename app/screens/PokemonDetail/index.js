@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, TouchableOpacity, ImageBackground, Image} from 'react-native';
 import styled from 'styled-components';
-import {IBText} from 'app/components';
+import {PDText} from 'app/components';
 import {CommonActions} from '@react-navigation/native';
 import Images from 'app/config/Images';
 import {resetAndGoToScreen} from 'app/helpers/Utils';
@@ -35,7 +35,7 @@ export default function PokemonDetail(props) {
             navigation.dispatch(CommonActions.goBack());
           }}>
           <BackIcon source={Images.backIcon} />
-          <IBText
+          <PDText
             numberOfLines={1}
             ellipsizeMode="tail"
             shouldTranslate={false}
@@ -46,7 +46,7 @@ export default function PokemonDetail(props) {
               marginLeft: rs[15],
             }}>
             {params.name.english}
-          </IBText>
+          </PDText>
         </TouchableOpacity>
 
         <View style={{flexDirection: 'row', marginBottom: rs[30]}}>
@@ -63,7 +63,7 @@ export default function PokemonDetail(props) {
                   borderRadius: rs[30],
                   backgroundColor: 'rgba(0, 0, 0, 0.1)',
                 }}>
-                <IBText
+                <PDText
                   textStyle={{
                     marginHorizontal: rs[4],
                     fontSize: rs[15],
@@ -72,7 +72,7 @@ export default function PokemonDetail(props) {
                   ellipsizeMode="tail"
                   shouldTranslate={false}>
                   {type}
-                </IBText>
+                </PDText>
               </View>
             );
           })}
@@ -102,7 +102,7 @@ export default function PokemonDetail(props) {
                 flexDirection: 'row',
                 margin: rs[10],
               }}>
-              <IBText
+              <PDText
                 textStyle={{
                   width: rs[150],
                   marginHorizontal: rs[4],
@@ -112,8 +112,8 @@ export default function PokemonDetail(props) {
                 ellipsizeMode="tail"
                 shouldTranslate={false}>
                 {key}
-              </IBText>
-              <IBText
+              </PDText>
+              <PDText
                 textStyle={{
                   marginHorizontal: rs[4],
                   fontSize: rs[15],
@@ -122,7 +122,7 @@ export default function PokemonDetail(props) {
                 ellipsizeMode="tail"
                 shouldTranslate={false}>
                 {value}
-              </IBText>
+              </PDText>
             </View>
           );
         })}

@@ -1,3 +1,3 @@
-import IBText from './IBText';
+import PDText from './PDText';
 
-export {IBText};
+export {PDText};
